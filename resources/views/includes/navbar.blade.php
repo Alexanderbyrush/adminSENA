@@ -10,20 +10,68 @@
         </button>
         <div class="collapse navbar-collapse" id="adminsenaNavbar">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Panel</a>
+                <!-- Dropdown para Gestión Académica -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs(['teacher.*', 'apprentice.*', 'course.*', 'courseTeacher.*']) ? 'active' : '' }}"
+                       href="#" id="academicDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-journal-bookmark-fill me-1"></i> Gestión Académica
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="academicDropdown">
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('teacher.*') ? 'active' : '' }}"
+                               href="{{ route('teacher.index') }}">
+                                <i class="bi bi-person-video me-2"></i> Instructores
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('apprentice.*') ? 'active' : '' }}"
+                               href="{{ route('apprentices.index') }}">
+                                <i class="bi bi-people-fill me-2"></i> Aprendices
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('course.*') ? 'active' : '' }}"
+                               href="{{ route('course.index') }}">
+                                <i class="bi bi-book-half me-2"></i> Cursos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('courseTeacher.*') ? 'active' : '' }}"
+                               href="{{ route('courseTeacher.index') }}">
+                                <i class="bi bi-person-plus me-2"></i> Asignación Cursos
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Reportes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Configuración</a>
+
+                <!-- Dropdown para Recursos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs(['areas.*', 'trainingCenter.*', 'computer.*']) ? 'active' : '' }}"
+                       href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-collection-fill me-1"></i> Recursos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('areas.*') ? 'active' : '' }}"
+                               href="{{ route('areas.index') }}">
+                                <i class="bi bi-grid-fill me-2"></i> Áreas
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('trainingCenter.*') ? 'active' : '' }}"
+                               href="{{ route('trainingCenter.index') }}">
+                                <i class="bi bi-building me-2"></i> Centros de Formación
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('computer.*') ? 'active' : '' }}"
+                               href="{{ route('computer.index') }}">
+                                <i class="bi bi-pc-display me-2"></i> Computadores
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
